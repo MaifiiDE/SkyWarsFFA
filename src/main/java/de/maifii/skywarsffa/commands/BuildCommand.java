@@ -31,7 +31,7 @@ public class BuildCommand implements CommandExecutor {
                     }
                 }
                 else
-                    spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.falscheEingabe + "build");
+                    spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.wrongInput + "build");
             }
             else
                 spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.noPermission);

@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.util.Objects;
 
 public class FileUtils {
 
@@ -25,7 +26,7 @@ public class FileUtils {
         cfg.addDefault("noPermission", "Dazu hast du &ckeine §7Berechtigung!");
         cfg.addDefault("buildOn", "Du wurdest in den &9Bau Modus &7hinzugefügt.");
         cfg.addDefault("buildOff", "Du wurdest aus den &9Bau Modus &7entfernt.");
-        cfg.addDefault("falscheEingabe", "&cFalsche Eingabe&7! Bitte benutze &9/");
+        cfg.addDefault("wrongInput", "&cFalsche Eingabe&7! Bitte benutze &9/");
         cfg.addDefault("locationSet", "Du hast erfolgreich eine &9Location &7gesetzt ");
         try {
             cfg.save(getConfigFile());
@@ -40,7 +41,7 @@ public class FileUtils {
         SkyWarsFFA.noPermission = ChatColor.translateAlternateColorCodes('&', cfg.getString("noPermission"));
         SkyWarsFFA.buildOn = ChatColor.translateAlternateColorCodes('&', cfg.getString("buildOn"));
         SkyWarsFFA.buildOff = ChatColor.translateAlternateColorCodes('&', cfg.getString("buildOff"));
-        SkyWarsFFA.falscheEingabe = ChatColor.translateAlternateColorCodes('&', cfg.getString("falscheEingabe"));
+        SkyWarsFFA.wrongInput = ChatColor.translateAlternateColorCodes('&', cfg.getString("wrongInput"));
         SkyWarsFFA.locationSet = ChatColor.translateAlternateColorCodes('&', cfg.getString("locationSet"));
     }
 }

@@ -18,7 +18,7 @@ public class SetCommand implements CommandExecutor {
             if(spieler.hasPermission("cursedcats.inhaber")) {
                 if(args.length == 1) {
                     if(args[0].equalsIgnoreCase("Spawn")) {
-                        locations.setLocationn("Spawn", spieler);
+                        locations.setLocation("Spawn", spieler);
                     }
                     else if(args[0].equalsIgnoreCase("Spawnheight")) {
                         locations.setHeight("Spawnheight", spieler);
@@ -27,10 +27,10 @@ public class SetCommand implements CommandExecutor {
                         locations.setHeight("Deathheight", spieler);
                     }
                     else
-                        spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.falscheEingabe + "set [Spawn, Spawnheight, Deathheigt]");
+                        spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.wrongInput + "set [Spawn, Spawnheight, Deathheigt]");
                 }
                 else
-                    spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.falscheEingabe + "set [Spawn, Spawnheight, Deathheigt]");
+                    spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.wrongInput + "set [Spawn, Spawnheight, Deathheigt]");
             }
             else
                 spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.noPermission);

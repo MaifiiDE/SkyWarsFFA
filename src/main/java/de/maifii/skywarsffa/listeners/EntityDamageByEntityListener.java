@@ -18,34 +18,34 @@ public class EntityDamageByEntityListener implements Listener {
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         LocationUtils locations = new LocationUtils();
         ItemUtils items = new ItemUtils();
-        InventoryUtils invs = new InventoryUtils();
+        InventoryUtils invUtils = new InventoryUtils();
 
         Entity playerEntity = event.getEntity();
         Entity damagerEntity = event.getDamager();
-        Player spieler = null;
-        Player lastdamager = null;
+        Player player = null;
+        Player lastDamager = null;
 
         if (playerEntity instanceof Player) {
-            spieler = (Player)((Object)playerEntity);
+            player = (Player)((Object)playerEntity);
         }
         if (damagerEntity instanceof Player) {
-            lastdamager = (Player)((Object)damagerEntity);
+            lastDamager = (Player)((Object)damagerEntity);
         }
 
-        if(spieler.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
-            SkyWarsFFA.getInstance().getLastDamager().put(spieler, lastdamager);
-            if (spieler.getHealth() - event.getFinalDamage() <= 0.0) {
+        if(player.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
+            SkyWarsFFA.getInstance().getLastDamager().put(player, lastDamager);
+            if (player.getHealth() - event.getFinalDamage() <= 0.0) {
                 event.setCancelled(true);
-                Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + spieler.getName() + " §7wurde von §9" + lastdamager.getName() + " §7getötet.");
-                locations.teleport("Spawn", spieler);
-                spieler.setHealth(20);
-                spieler.getInventory().clear();
-                invs.setEquipment(spieler);
-                invs.setInventory(spieler);
-                invs.addEnderPearl(lastdamager);
+                Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9" + lastDamager.getName() + " §7getötet.");
+                locations.teleport("Spawn", player);
+                player.setHealth(20);
+                player.getInventory().clear();
+                invUtils.setEquipment(player);
+                invUtils.setInventory(player);
+                invUtils.addEnderPearl(lastDamager);
 
-                lastdamager.setHealth(20);
-                lastdamager.getWorld().playSound(spieler.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
+                lastDamager.setHealth(20);
+                lastDamager.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
             }
         }else {
             event.setCancelled(true);

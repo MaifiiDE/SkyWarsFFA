@@ -14,11 +14,11 @@ import org.bukkit.metadata.MetadataValue;
 public class BlockPlaceListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        Player spieler = event.getPlayer();
+        Player player = event.getPlayer();
         //LOCATION FÜR PLAZIERTEN BLOCK ERSTELLEN
         Location location = event.getBlockPlaced().getLocation();
         //WENN SPIELER NICHT IN BUILDMODE IST
-        if (!SkyWarsFFA.getBuildMode().contains(spieler)) {
+        if (!SkyWarsFFA.getBuildMode().contains(player)) {
             //WENN DIE BLOCK LOCATION GRÖßER ODER GLEICH IST WIE SPAWNHEIGHT
             if (location.getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
                 event.setCancelled(true);

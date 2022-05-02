@@ -13,14 +13,14 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         LocationUtils locations = new LocationUtils();
-        InventoryUtils invs = new InventoryUtils();
-        Player spieler = event.getPlayer();
+        InventoryUtils invUtils = new InventoryUtils();
+        Player player = event.getPlayer();
 
-        spieler.setMaxHealth(20.0);
-        spieler.setHealth(20.0);
-        invs.setInventory(spieler);
-        invs.setEquipment(spieler);
-        event.setJoinMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + spieler.getName() + " §7hat das Spiel betreten.");
-        locations.teleport("Spawn", spieler);
+        player.setMaxHealth(20.0);
+        player.setHealth(20.0);
+        invUtils.setInventory(player);
+        invUtils.setEquipment(player);
+        event.setJoinMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + player.getName() + " §7hat das Spiel betreten.");
+        locations.teleport("Spawn", player);
     }
 }

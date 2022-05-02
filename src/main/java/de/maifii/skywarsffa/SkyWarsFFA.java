@@ -27,7 +27,7 @@ public class SkyWarsFFA extends JavaPlugin {
     public static String noPermission;
     public static String buildOn;
     public static String buildOff;
-    public static String falscheEingabe;
+    public static String wrongInput;
     public static String locationSet;
 
     private static SkyWarsFFA instance;

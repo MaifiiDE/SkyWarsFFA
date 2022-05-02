@@ -12,12 +12,12 @@ public class EntityDamageListener implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
         Entity playerEntity = event.getEntity();
-        Player spieler = null;
+        Player player = null;
         if (playerEntity instanceof Player) {
-            spieler = (Player) ((Object)playerEntity);
+            player = (Player) ((Object)playerEntity);
         }
-        if (spieler instanceof Player) {
-            if (spieler.getLocation().getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
+        if (player instanceof Player) {
+            if (player.getLocation().getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
                 event.setCancelled(true);
             }
             if (event.getCause() == EntityDamageEvent.DamageCause.FALL) {

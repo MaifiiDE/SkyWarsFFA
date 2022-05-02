@@ -17,29 +17,29 @@ public class PlayerMoveListener implements Listener {
     public void onPlayerMove(PlayerMoveEvent event) {
         LocationUtils locations = new LocationUtils();
         ItemUtils items = new ItemUtils();
-        InventoryUtils invs = new InventoryUtils();
+        InventoryUtils invUtils = new InventoryUtils();
 
-        Player spieler = event.getPlayer();
-        Player lastDamager = SkyWarsFFA.getInstance().getLastDamager().get(spieler);
+        Player player = event.getPlayer();
+        Player lastDamager = SkyWarsFFA.getInstance().getLastDamager().get(player);
 
-        if (spieler.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("Deathheight.Y")) {
+        if (player.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("Deathheight.Y")) {
             if (lastDamager != null) {
-                Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + spieler.getName() + " §7wurde von §9"+ lastDamager.getName()+ " §7getötet.");
-                locations.teleport("Spawn", spieler);
-                spieler.setHealth(20.0);
-                spieler.getInventory().clear();
-                invs.setInventory(spieler);
-                invs.setEquipment(spieler);
-                invs.addEnderPearl(lastDamager);
+                Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9"+ lastDamager.getName()+ " §7getötet.");
+                locations.teleport("Spawn", player);
+                player.setHealth(20.0);
+                player.getInventory().clear();
+                invUtils.setInventory(player);
+                invUtils.setEquipment(player);
+                invUtils.addEnderPearl(lastDamager);
                 lastDamager.setHealth(20.0);
-                lastDamager.playSound(spieler.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
+                lastDamager.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
             } else {
-                locations.teleport("Spawn", spieler);
-                spieler.setHealth(20.0);
-                spieler.getInventory().clear();
-                invs.setInventory(spieler);
-                invs.setEquipment(spieler);
-                Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + spieler.getName() + " §7ist gestorben.");
+                locations.teleport("Spawn", player);
+                player.setHealth(20.0);
+                player.getInventory().clear();
+                invUtils.setInventory(player);
+                invUtils.setEquipment(player);
+                Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + player.getName() + " §7ist gestorben.");
             }
         }
     }

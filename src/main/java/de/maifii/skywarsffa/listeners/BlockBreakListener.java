@@ -18,16 +18,16 @@ public class BlockBreakListener implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
 
 
-        Player spieler = event.getPlayer();
+        Player player = event.getPlayer();
         Location location = event.getBlock().getLocation();
-        if (!SkyWarsFFA.getBuildMode().contains(spieler)) {
+        if (!SkyWarsFFA.getBuildMode().contains(player)) {
             if (location.getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
                 event.setCancelled(true);
             } else {
                 Player p = event.getPlayer();
 
 
-                final Material blocktype = event.getBlock().getType();
+                final Material blockType = event.getBlock().getType();
                 final BlockData blockdata = event.getBlock().getBlockData();
                 BlockFace face = event.getBlock().getFace(event.getBlock());
                 event.getBlock().setMetadata("Break", (MetadataValue) new FixedMetadataValue(Bukkit.getPluginManager().getPlugin("SkyWarsFFA"), (Object) face));
@@ -40,7 +40,7 @@ public class BlockBreakListener implements Listener {
 
                     @Override
                     public void run() {
-                        event.getBlock().setType(blocktype);
+                        event.getBlock().setType(blockType);
                         event.getBlock().setBlockData(blockdata);
 
                         location.getWorld().playEffect(location, Effect.ENDER_SIGNAL, 3);

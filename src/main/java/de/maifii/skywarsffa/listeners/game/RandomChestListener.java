@@ -20,7 +20,7 @@ public class RandomChestListener implements Listener {
 
         Location location = event.getClickedBlock().getLocation();
         ItemUtils items = new ItemUtils();
-        Player spieler = event.getPlayer();
+        Player player = event.getPlayer();
 
 
 
@@ -30,10 +30,10 @@ public class RandomChestListener implements Listener {
 
             if(event.getClickedBlock().getType() == Material.CHEST) {
                 Random r = new Random();
-                int zufall = r.nextInt(19);
-                switch (zufall) {
+                int random = r.nextInt(19);
+                switch (random) {
                     case 0:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -46,7 +46,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 1:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -59,7 +59,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 2:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -72,7 +72,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 3:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -85,7 +85,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 4:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -98,7 +98,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 5:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -111,7 +111,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 6:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -124,7 +124,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 7:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -137,7 +137,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 8:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -150,7 +150,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 9:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -163,7 +163,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 10:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -176,7 +176,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 11:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -189,7 +189,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 12:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -202,7 +202,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 13:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -215,7 +215,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 14:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -228,7 +228,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 15:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -241,7 +241,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 16:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -254,7 +254,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 17:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);
@@ -267,7 +267,7 @@ public class RandomChestListener implements Listener {
                         }, 20*120);
                         break;
                     case 18:
-                        spieler.closeInventory();
+                        player.closeInventory();
                         block.setType(Material.GLASS);
                         location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                         location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON,1, 1);

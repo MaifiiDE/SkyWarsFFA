@@ -8,7 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class InventoryUtils {
 
-    public void setEquipment(Player spieler) {
+    public void setEquipment(Player player) {
         ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
         ItemMeta helmetMeta = helmet.getItemMeta();
         helmetMeta.setUnbreakable(true);
@@ -26,23 +26,23 @@ public class InventoryUtils {
         ItemMeta bootsMeta = boots.getItemMeta();
         bootsMeta.setUnbreakable(true);
         boots.setItemMeta(bootsMeta);
-        spieler.getEquipment().setHelmet(helmet);
-        spieler.getEquipment().setChestplate(chestplate);
-        spieler.getEquipment().setLeggings(leggings);
-        spieler.getEquipment().setBoots(boots);
+        player.getEquipment().setHelmet(helmet);
+        player.getEquipment().setChestplate(chestplate);
+        player.getEquipment().setLeggings(leggings);
+        player.getEquipment().setBoots(boots);
     }
 
-    public void setInventory(Player spieler) {
+    public void setInventory(Player player) {
         ItemUtils items = new ItemUtils();
-        items.setItemInInventoryWithEnchantment(spieler.getInventory(), Material.IRON_SWORD, "", Enchantment.DAMAGE_ALL, 1, 0);
-        items.setItemInInventoryWithEnchantment(spieler.getInventory(), Material.STICK, "", Enchantment.KNOCKBACK, 1, 1);
-        items.setItemInInventory(spieler.getInventory(), Material.ENDER_PEARL, "", 2, 2);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 3, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 4, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 5, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 6, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 7, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.LADDER, "", 8, 4);
+        items.setItemInInventoryWithEnchantment(player.getInventory(), Material.IRON_SWORD, "", Enchantment.DAMAGE_ALL, 1, 0);
+        items.setItemInInventoryWithEnchantment(player.getInventory(), Material.STICK, "", Enchantment.KNOCKBACK, 1, 1);
+        items.setItemInInventory(player.getInventory(), Material.ENDER_PEARL, "", 2, 2);
+        items.setItemInInventory(player.getInventory(), Material.SANDSTONE, "", 3, 64);
+        items.setItemInInventory(player.getInventory(), Material.SANDSTONE, "", 4, 64);
+        items.setItemInInventory(player.getInventory(), Material.SANDSTONE, "", 5, 64);
+        items.setItemInInventory(player.getInventory(), Material.SANDSTONE, "", 6, 64);
+        items.setItemInInventory(player.getInventory(), Material.SANDSTONE, "", 7, 64);
+        items.setItemInInventory(player.getInventory(), Material.LADDER, "", 8, 4);
     }
 
     public void addEnderPearl(Player player) {
