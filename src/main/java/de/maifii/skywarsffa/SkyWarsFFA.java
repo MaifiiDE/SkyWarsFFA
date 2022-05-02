@@ -1,10 +1,11 @@
 package de.maifii.skywarsffa;
 
 import de.maifii.skywarsffa.commands.BuildCommand;
-import de.maifii.skywarsffa.commands.SetCommand;
+import de.maifii.skywarsffa.commands.SetLocationCommand;
 import de.maifii.skywarsffa.listeners.*;
 import de.maifii.skywarsffa.listeners.game.RandomChestListener;
 import de.maifii.skywarsffa.utils.FileUtils;
+import net.forthecrown.royalgrenadier.RoyalGrenadier;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -15,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class SkyWarsFFA extends JavaPlugin {
 
@@ -40,6 +40,8 @@ public class SkyWarsFFA extends JavaPlugin {
         instance = this;
         buildMode = new ArrayList<>();
 
+        RoyalGrenadier.initialize(this);
+
         FileUtils.setStandardConfig();
         FileUtils.readConfig();
 
@@ -59,8 +61,8 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
 
-        Objects.requireNonNull(this.getCommand("build")).setExecutor(new BuildCommand());
-        Objects.requireNonNull(this.getCommand("set")).setExecutor(new SetCommand());
+        new BuildCommand().register();
+        new SetLocationCommand().register();
     }
 
     private void loadConfig() {
