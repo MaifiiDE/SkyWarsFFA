@@ -1,0 +1,2 @@
+# SkyWarsFFA
+ Minecraft Spielmodus
