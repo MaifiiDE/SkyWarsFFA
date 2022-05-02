@@ -9,8 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import java.util.Objects;
 
@@ -24,8 +22,8 @@ public class PlayerJoinListener implements Listener {
 
         Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).setBaseValue(20.0);
         player.setHealth(20.0);
-        invUtils.setInventory(player);
-        invUtils.setEquipment(player);
+        invUtils.setDefaultInventory(player);
+        invUtils.setDefaultEquipment(player);
         event.joinMessage(Component.text(SkyWarsFFA.prefix + "Der Spieler §9" + player.getName() + " §7hat das Spiel betreten."));
         LocationUtils.teleport("Spawn", player);
     }

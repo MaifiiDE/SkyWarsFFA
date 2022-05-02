@@ -11,6 +11,8 @@ public class SetLocationCommand extends AbstractCommand {
         super("set", SkyWarsFFA.getInstance());
 
         setPermission("cursedcats.owner");
+        setPermissionMessage(SkyWarsFFA.prefix + SkyWarsFFA.noPermission);
+
     }
 
     @Override

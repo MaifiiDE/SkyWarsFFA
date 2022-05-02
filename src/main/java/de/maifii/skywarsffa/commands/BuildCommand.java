@@ -14,6 +14,8 @@ public class BuildCommand extends AbstractCommand {
         super("build", SkyWarsFFA.getInstance());
 
         setPermission("cursedcats.admin");
+        setPermissionMessage(SkyWarsFFA.prefix + SkyWarsFFA.noPermission);
+
     }
 
     @Override

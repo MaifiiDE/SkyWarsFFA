@@ -31,8 +31,8 @@ public class EntityDamageByEntityListener implements Listener {
                 locations.teleport("Spawn", player);
                 player.setHealth(20);
                 player.getInventory().clear();
-                invUtils.setEquipment(player);
-                invUtils.setInventory(player);
+                invUtils.setDefaultEquipment(player);
+                invUtils.setDefaultInventory(player);
                 invUtils.addEnderPearl(lastDamager);
 
                 lastDamager.setHealth(20);

@@ -8,7 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class InventoryUtils {
 
-    public void setEquipment(Player player) {
+    public void setDefaultEquipment(Player player) {
         ItemStack helmet = new ItemStack(Material.LEATHER_HELMET);
         ItemMeta helmetMeta = helmet.getItemMeta();
         helmetMeta.setUnbreakable(true);
@@ -32,7 +32,7 @@ public class InventoryUtils {
         player.getEquipment().setBoots(boots);
     }
 
-    public void setInventory(Player player) {
+    public void setDefaultInventory(Player player) {
         ItemUtils items = new ItemUtils();
         items.setItemInInventoryWithEnchantment(player.getInventory(), Material.IRON_SWORD, "", Enchantment.DAMAGE_ALL, 1, 0);
         items.setItemInInventoryWithEnchantment(player.getInventory(), Material.STICK, "", Enchantment.KNOCKBACK, 1, 1);
