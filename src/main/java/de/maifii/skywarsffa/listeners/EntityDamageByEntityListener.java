@@ -1,5 +1,6 @@
 package de.maifii.skywarsffa.listeners;
 
+import de.maifii.coinapi.api.CoinAPI;
 import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.utils.InventoryUtils;
 import de.maifii.skywarsffa.utils.ItemUtils;
@@ -46,6 +47,7 @@ public class EntityDamageByEntityListener implements Listener {
 
                 lastdamager.setHealth(20);
                 lastdamager.getWorld().playSound(spieler.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
+                CoinAPI.getApi().addCoins(event.getDamager().getUniqueId(), 10);
             }
         }else {
             event.setCancelled(true);

@@ -18,7 +18,7 @@ public class RandomChestListener implements Listener {
     @EventHandler
     public void onRandomChestClick(PlayerInteractEvent event) {
 
-        Location location = event.getClickedBlock().getLocation();
+         Location location = event.getClickedBlock().getLocation();
         ItemUtils items = new ItemUtils();
         Player spieler = event.getPlayer();
 
