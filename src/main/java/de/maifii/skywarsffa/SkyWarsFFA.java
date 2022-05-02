@@ -10,20 +10,22 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class SkyWarsFFA extends JavaPlugin {
 
-    private File file = new File("plugins//LobbySystem//locations.yml");
-    private YamlConfiguration location = YamlConfiguration.loadConfiguration(this.file);
-    private HashMap<Player, Player> lastDamager = new HashMap();
+    private final File file = new File("plugins/LobbySystem/locations.yml");
+    private final YamlConfiguration location = YamlConfiguration.loadConfiguration(this.file);
+    private final HashMap<Player, Player> lastDamager = new HashMap<>();
 
     private static ArrayList<Player> buildMode;
 
-    public static String Prefix;
+    public static String prefix;
     public static String noPermission;
     public static String buildOn;
     public static String buildOff;
@@ -36,7 +38,7 @@ public class SkyWarsFFA extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        buildMode = new ArrayList<Player>();
+        buildMode = new ArrayList<>();
 
         FileUtils.setStandardConfig();
         FileUtils.readConfig();
@@ -57,8 +59,8 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
 
-        getCommand("build").setExecutor(new BuildCommand());
-        getCommand("set").setExecutor(new SetCommand());
+        Objects.requireNonNull(this.getCommand("build")).setExecutor(new BuildCommand());
+        Objects.requireNonNull(this.getCommand("set")).setExecutor(new SetCommand());
     }
 
     private void loadConfig() {
@@ -81,7 +83,7 @@ public class SkyWarsFFA extends JavaPlugin {
     }
 
     @Override
-    public File getFile() {
+    public @NotNull File getFile() {
         return file;
     }
 

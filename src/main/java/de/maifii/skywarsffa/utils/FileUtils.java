@@ -22,7 +22,7 @@ public class FileUtils {
     public static void setStandardConfig() {
         FileConfiguration cfg = getConfigFileConfiguration();
         cfg.options().copyDefaults(true);
-        cfg.addDefault("Prefix", "&8&l»&7» &9SkyWarsFFA &7| ");
+        cfg.addDefault("prefix", "&8&l»&7» &9SkyWarsFFA &7| ");
         cfg.addDefault("noPermission", "Dazu hast du &ckeine §7Berechtigung!");
         cfg.addDefault("buildOn", "Du wurdest in den &9Bau Modus &7hinzugefügt.");
         cfg.addDefault("buildOff", "Du wurdest aus den &9Bau Modus &7entfernt.");
@@ -37,11 +37,11 @@ public class FileUtils {
 
     public static void readConfig() {
         FileConfiguration cfg = getConfigFileConfiguration();
-        SkyWarsFFA.Prefix = ChatColor.translateAlternateColorCodes('&', cfg.getString("Prefix"));
-        SkyWarsFFA.noPermission = ChatColor.translateAlternateColorCodes('&', cfg.getString("noPermission"));
-        SkyWarsFFA.buildOn = ChatColor.translateAlternateColorCodes('&', cfg.getString("buildOn"));
-        SkyWarsFFA.buildOff = ChatColor.translateAlternateColorCodes('&', cfg.getString("buildOff"));
-        SkyWarsFFA.wrongInput = ChatColor.translateAlternateColorCodes('&', cfg.getString("wrongInput"));
-        SkyWarsFFA.locationSet = ChatColor.translateAlternateColorCodes('&', cfg.getString("locationSet"));
+        SkyWarsFFA.prefix = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(cfg.getString("prefix")));
+        SkyWarsFFA.noPermission = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(cfg.getString("noPermission")));
+        SkyWarsFFA.buildOn = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(cfg.getString("buildOn")));
+        SkyWarsFFA.buildOff = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(cfg.getString("buildOff")));
+        SkyWarsFFA.wrongInput = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(cfg.getString("wrongInput")));
+        SkyWarsFFA.locationSet = ChatColor.translateAlternateColorCodes('&', Objects.requireNonNull(cfg.getString("locationSet")));
     }
 }

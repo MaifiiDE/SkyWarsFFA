@@ -9,7 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.MetadataValue;
+
+import java.util.Objects;
 
 
 public class BlockBreakListener implements Listener {
@@ -21,31 +22,22 @@ public class BlockBreakListener implements Listener {
         Player player = event.getPlayer();
         Location location = event.getBlock().getLocation();
         if (!SkyWarsFFA.getBuildMode().contains(player)) {
-            if (location.getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
+            if (location.getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("spawnHeight.y")) {
                 event.setCancelled(true);
             } else {
-                Player p = event.getPlayer();
-
-
                 final Material blockType = event.getBlock().getType();
                 final BlockData blockdata = event.getBlock().getBlockData();
                 BlockFace face = event.getBlock().getFace(event.getBlock());
-                event.getBlock().setMetadata("Break", (MetadataValue) new FixedMetadataValue(Bukkit.getPluginManager().getPlugin("SkyWarsFFA"), (Object) face));
+                event.getBlock().setMetadata("Break", new FixedMetadataValue(Objects.requireNonNull(Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("SkyWarsFFA"))), face));
                 if (event.getBlock().hasMetadata("Placed")) {
                     return;
                 }
-                Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), new Runnable() {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> {
+                    event.getBlock().setType(blockType);
+                    event.getBlock().setBlockData(blockdata);
 
-                    int blocktime = 4;
-
-                    @Override
-                    public void run() {
-                        event.getBlock().setType(blockType);
-                        event.getBlock().setBlockData(blockdata);
-
-                        location.getWorld().playEffect(location, Effect.ENDER_SIGNAL, 3);
-                        location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON, 1F, 1F);
-                    }
+                    location.getWorld().playEffect(location, Effect.ENDER_SIGNAL, 3);
+                    location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON, 1F, 1F);
                 }, 20 * 3);
             }
         }

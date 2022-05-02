@@ -1,5 +1,6 @@
 package de.maifii.skywarsffa.utils;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
@@ -8,10 +9,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemUtils {
 
-    public void setItemInInventory(Inventory inventory, Material material, String name, Integer slot, Integer amount) {
+    public void setItemInInventory(Inventory inventory, Material material, String displayName, Integer slot, Integer amount) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName(name);
+        itemMeta.displayName(Component.text(displayName));
         item.setItemMeta(itemMeta);
         item.setAmount(amount);
         inventory.setItem(slot, item);
@@ -20,17 +21,17 @@ public class ItemUtils {
     public void addItemInInventory(Inventory inventory, Material material, String displayName, Integer amount) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName(displayName);
+        itemMeta.displayName(Component.text(displayName));
         itemMeta.setUnbreakable(true);
         item.setItemMeta(itemMeta);
         item.setAmount(amount);
-        inventory.addItem(new ItemStack[]{item});
+        inventory.addItem(item);
     }
 
-    public void setItemInInventoryWithEnchantment(Inventory inventory, Material material, String name, Enchantment enchantment, Integer enchantmentValue, Integer slot) {
+    public void setItemInInventoryWithEnchantment(Inventory inventory, Material material, String displayName, Enchantment enchantment, Integer enchantmentValue, Integer slot) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName(name);
+        itemMeta.displayName(Component.text(displayName));
         itemMeta.addEnchant(enchantment, enchantmentValue, true);
         itemMeta.setUnbreakable(true);
         item.setItemMeta(itemMeta);

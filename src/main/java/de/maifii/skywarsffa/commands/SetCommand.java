@@ -6,35 +6,34 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class SetCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, String[] args) {
         LocationUtils locations = new LocationUtils();
 
-        Player spieler = (Player) sender;
-        if(sender instanceof Player) {
-            if(spieler.hasPermission("cursedcats.inhaber")) {
-                if(args.length == 1) {
-                    if(args[0].equalsIgnoreCase("Spawn")) {
-                        locations.setLocation("Spawn", spieler);
-                    }
-                    else if(args[0].equalsIgnoreCase("Spawnheight")) {
-                        locations.setHeight("Spawnheight", spieler);
-                    }
-                    else if(args[0].equalsIgnoreCase("Deathheight")) {
-                        locations.setHeight("Deathheight", spieler);
-                    }
-                    else
-                        spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.wrongInput + "set [Spawn, Spawnheight, Deathheigt]");
+        Player player = (Player) sender;
+        if(player.hasPermission("cursedcats.owner")) {
+            if(args.length == 1) {
+                if(args[0].equalsIgnoreCase("spawn")) {
+                    locations.setLocation("spawn", player);
+                }
+                else if(args[0].equalsIgnoreCase("spawnHeight")) {
+                    locations.setHeight("spawnHeight", player);
+                }
+                else if(args[0].equalsIgnoreCase("deathHeight")) {
+                    locations.setHeight("deathHeight", player);
                 }
                 else
-                    spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.wrongInput + "set [Spawn, Spawnheight, Deathheigt]");
+                    player.sendMessage(SkyWarsFFA.prefix + SkyWarsFFA.wrongInput + "set [spawn, spawnHeight, deathHeight]");
             }
             else
-                spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.noPermission);
+                player.sendMessage(SkyWarsFFA.prefix + SkyWarsFFA.wrongInput + "set [spawn, spawnHeight, deathHeight]");
         }
+        else
+            player.sendMessage(SkyWarsFFA.prefix + SkyWarsFFA.noPermission);
         return false;
     }
 }

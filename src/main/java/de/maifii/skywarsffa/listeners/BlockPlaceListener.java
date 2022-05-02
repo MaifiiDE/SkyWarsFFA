@@ -9,35 +9,26 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.MetadataValue;
 
 public class BlockPlaceListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
-        //LOCATION FÜR PLAZIERTEN BLOCK ERSTELLEN
         Location location = event.getBlockPlaced().getLocation();
-        //WENN SPIELER NICHT IN BUILDMODE IST
         if (!SkyWarsFFA.getBuildMode().contains(player)) {
-            //WENN DIE BLOCK LOCATION GRÖßER ODER GLEICH IST WIE SPAWNHEIGHT
-            if (location.getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
+            if (location.getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("spawnHeight.y")) {
                 event.setCancelled(true);
-                //WENN SPIELER BEDINGUNG ERFÜLLT
             } else {
                     BlockFace face = event.getBlockPlaced().getFace(event.getBlockPlaced());
-                    event.getBlockPlaced().setMetadata("Placed", (MetadataValue) new FixedMetadataValue(SkyWarsFFA.getInstance(), (Object) face));
+                    event.getBlockPlaced().setMetadata("Placed", new FixedMetadataValue(SkyWarsFFA.getInstance(), face));
                     if (event.getBlockReplacedState().hasMetadata("Break")) {
                         return;
                     }
-                    Bukkit.getScheduler().runTaskLater(SkyWarsFFA.getInstance(), new Runnable() {
+                    Bukkit.getScheduler().runTaskLater(SkyWarsFFA.getInstance(), () -> {
+                        event.getBlockPlaced().breakNaturally(new ItemStack(Material.AIR));
 
-                        @Override
-                        public void run() {
-                            event.getBlockPlaced().breakNaturally(new ItemStack(Material.AIR));
-
-                            location.getWorld().playEffect(location, Effect.ENDER_SIGNAL, 3);
-                            location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON, 1F, 1F);
-                        }
+                        location.getWorld().playEffect(location, Effect.ENDER_SIGNAL, 3);
+                        location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON, 1F, 1F);
                     }, 20*3);
                 }
             }

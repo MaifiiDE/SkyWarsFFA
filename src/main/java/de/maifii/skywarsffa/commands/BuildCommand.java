@@ -7,35 +7,34 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class BuildCommand implements CommandExecutor {
 
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-        Player spieler = (Player) sender;
-        if(sender instanceof Player) {
-            if(spieler.hasPermission("cursedcats.admin")) {
-                if(args.length == 0){
-                    if(SkyWarsFFA.getBuildMode().contains(spieler)) {
-                        spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.buildOff);
-                        SkyWarsFFA.getBuildMode().remove(spieler);
-                        spieler.setGameMode(GameMode.SURVIVAL);
-                        spieler.playSound(spieler.getLocation(), Sound.BLOCK_CHEST_CLOSE, 1 ,1);
-                    }
-                    else {
-                        spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.buildOn);
-                        SkyWarsFFA.getBuildMode().add(spieler);
-                        spieler.setGameMode(GameMode.CREATIVE);
-                        spieler.playSound(spieler.getLocation(), Sound.BLOCK_CHEST_OPEN, 1 ,1);
-                    }
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, String[] args) {
+        if (!(sender instanceof Player player)) return false;
+        if(player.hasPermission("cursedcats.admin")) {
+            if(args.length == 0){
+                if(SkyWarsFFA.getBuildMode().contains(player)) {
+                    player.sendMessage(SkyWarsFFA.prefix + SkyWarsFFA.buildOff);
+                    SkyWarsFFA.getBuildMode().remove(player);
+                    player.setGameMode(GameMode.SURVIVAL);
+                    player.playSound(player.getLocation(), Sound.BLOCK_CHEST_CLOSE, 1 ,1);
                 }
-                else
-                    spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.wrongInput + "build");
+                else {
+                    player.sendMessage(SkyWarsFFA.prefix + SkyWarsFFA.buildOn);
+                    SkyWarsFFA.getBuildMode().add(player);
+                    player.setGameMode(GameMode.CREATIVE);
+                    player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 1 ,1);
+                }
             }
             else
-                spieler.sendMessage(SkyWarsFFA.Prefix + SkyWarsFFA.noPermission);
+                player.sendMessage(SkyWarsFFA.prefix + SkyWarsFFA.wrongInput + "build");
         }
+        else
+            player.sendMessage(SkyWarsFFA.prefix + SkyWarsFFA.noPermission);
         return false;
     }
 }

@@ -2,11 +2,10 @@ package de.maifii.skywarsffa.listeners;
 
 import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.utils.InventoryUtils;
-import de.maifii.skywarsffa.utils.ItemUtils;
 import de.maifii.skywarsffa.utils.LocationUtils;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,26 +16,18 @@ public class EntityDamageByEntityListener implements Listener {
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         LocationUtils locations = new LocationUtils();
-        ItemUtils items = new ItemUtils();
         InventoryUtils invUtils = new InventoryUtils();
 
-        Entity playerEntity = event.getEntity();
-        Entity damagerEntity = event.getDamager();
-        Player player = null;
-        Player lastDamager = null;
-
-        if (playerEntity instanceof Player) {
-            player = (Player)((Object)playerEntity);
-        }
-        if (damagerEntity instanceof Player) {
-            lastDamager = (Player)((Object)damagerEntity);
+        if (!(event.getEntity() instanceof Player player && event.getDamager() instanceof Player lastDamager)) {
+            event.setCancelled(true);
+            return;
         }
 
-        if(player.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
+        if(player.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("spawnHeight.y")) {
             SkyWarsFFA.getInstance().getLastDamager().put(player, lastDamager);
             if (player.getHealth() - event.getFinalDamage() <= 0.0) {
                 event.setCancelled(true);
-                Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9" + lastDamager.getName() + " §7getötet.");
+                Bukkit.getServer().broadcast(Component.text(SkyWarsFFA.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9" + lastDamager.getName() + " §7getötet."));
                 locations.teleport("Spawn", player);
                 player.setHealth(20);
                 player.getInventory().clear();

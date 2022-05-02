@@ -2,7 +2,7 @@ name: SkyWarsFFA
 version: '${project.version}'
 main: de.maifii.skywarsffa.SkyWarsFFA
 api-version: 1.18
-authors: [ MaifiiDE ]
+authors: [ MaifiiDE, Wawwior ]
 
 commands:
   set:
