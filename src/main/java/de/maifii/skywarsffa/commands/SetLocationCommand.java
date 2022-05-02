@@ -4,7 +4,6 @@ import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.utils.LocationUtils;
 import net.forthecrown.grenadier.command.AbstractCommand;
 import net.forthecrown.grenadier.command.BrigadierCommand;
-import org.bukkit.plugin.Plugin;
 
 public class SetLocationCommand extends AbstractCommand {
 
