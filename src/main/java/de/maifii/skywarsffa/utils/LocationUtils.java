@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class LocationUtils {
 
-    public void teleport(String name, Player player) {
+    public static void teleport(String name, Player player) {
         World world = Bukkit.getWorld(Objects.requireNonNull(SkyWarsFFA.getInstance().getLocation().getString(name + ".world")));
         double x = SkyWarsFFA.getInstance().getLocation().getDouble(name + ".x");
         double y = SkyWarsFFA.getInstance().getLocation().getDouble(name + ".y");
@@ -22,7 +22,7 @@ public class LocationUtils {
         player.teleport(location);
     }
 
-    public void setLocation(String name, Player player) {
+    public static void setLocation(String name, Player player) {
         SkyWarsFFA.getInstance().getLocation().set(name + ".world", player.getWorld().getName());
         SkyWarsFFA.getInstance().getLocation().set(name + ".x", player.getLocation().getX());
         SkyWarsFFA.getInstance().getLocation().set(name + ".y",player.getLocation().getY());
@@ -31,14 +31,14 @@ public class LocationUtils {
         SkyWarsFFA.getInstance().getLocation().set(name + ".pitch", player.getLocation().getPitch());
         try {
             SkyWarsFFA.getInstance().getLocation().save(SkyWarsFFA.getInstance().getFile());
-            player.sendMessage(SkyWarsFFA.prefix + "DU hast die Location §e" + name + " §7gesetzt.");
+            player.sendMessage(SkyWarsFFA.prefix + "Du hast die Location §e" + name + " §7gesetzt.");
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setHeight(String name, Player player) {
+    public static void setHeight(String name, Player player) {
         SkyWarsFFA.getInstance().getLocation().set(name + ".y", player.getLocation().getY());
         try {
             SkyWarsFFA.getInstance().getLocation().save(SkyWarsFFA.getInstance().getFile());

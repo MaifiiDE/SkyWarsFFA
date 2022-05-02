@@ -4,8 +4,6 @@ main: de.maifii.skywarsffa.SkyWarsFFA
 api-version: 1.18
 authors: [ MaifiiDE, Wawwior ]
 
-commands:
-  set:
-    description: Setzt eine Location.
-  build:
-    description: Setzt dich in den Bau Modus.
+libraries: [
+  "com.mojang:brigadier:1.0.18"
+]
