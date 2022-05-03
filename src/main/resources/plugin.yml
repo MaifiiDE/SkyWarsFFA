@@ -4,6 +4,12 @@ main: de.maifii.skywarsffa.SkyWarsFFA
 api-version: 1.18
 authors: [ MaifiiDE, Wawwior ]
 
+commands:
+  mycommand:
+
+  build:
+
+
 libraries: [
   "com.mojang:brigadier:1.0.18"
 ]

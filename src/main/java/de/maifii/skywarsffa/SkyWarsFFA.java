@@ -1,21 +1,23 @@
 package de.maifii.skywarsffa;
 
-import de.maifii.skywarsffa.commands.BuildCommand;
-import de.maifii.skywarsffa.commands.SetLocationCommand;
+import de.maifii.skywarsffa.command.CommandManager;
 import de.maifii.skywarsffa.listeners.*;
 import de.maifii.skywarsffa.listeners.game.RandomChestListener;
 import de.maifii.skywarsffa.utils.FileUtils;
-import net.forthecrown.royalgrenadier.RoyalGrenadier;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SkyWarsFFA extends JavaPlugin {
 
@@ -40,13 +42,14 @@ public class SkyWarsFFA extends JavaPlugin {
         instance = this;
         buildMode = new ArrayList<>();
 
-        RoyalGrenadier.initialize(this);
-
         FileUtils.setStandardConfig();
         FileUtils.readConfig();
 
+        commandManager = new CommandManager(this);
+
         this.register();
         this.loadConfig();
+
     }
 
     private void register() {
@@ -61,8 +64,6 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
 
-        new BuildCommand().register();
-        new SetLocationCommand().register();
     }
 
     private void loadConfig() {
@@ -76,8 +77,17 @@ public class SkyWarsFFA extends JavaPlugin {
 
     }
 
+    CommandManager commandManager;
 
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        return commandManager.onCommand(sender, label, args);
+    }
 
+    @Override
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+        return commandManager.onTabComplete(sender, alias, args);
+    }
 
     //getters
     public static SkyWarsFFA getInstance() {

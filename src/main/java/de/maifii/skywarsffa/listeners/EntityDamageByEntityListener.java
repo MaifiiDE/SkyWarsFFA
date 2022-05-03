@@ -15,7 +15,6 @@ public class EntityDamageByEntityListener implements Listener {
 
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        LocationUtils locations = new LocationUtils();
         InventoryUtils invUtils = new InventoryUtils();
 
         if (!(event.getEntity() instanceof Player player && event.getDamager() instanceof Player lastDamager)) {
@@ -28,7 +27,7 @@ public class EntityDamageByEntityListener implements Listener {
             if (player.getHealth() - event.getFinalDamage() <= 0.0) {
                 event.setCancelled(true);
                 Bukkit.getServer().broadcast(Component.text(SkyWarsFFA.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9" + lastDamager.getName() + " §7getötet."));
-                locations.teleport("Spawn", player);
+                LocationUtils.teleport("Spawn", player);
                 player.setHealth(20);
                 player.getInventory().clear();
                 invUtils.setDefaultEquipment(player);
