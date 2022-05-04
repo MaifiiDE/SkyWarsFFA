@@ -3,6 +3,7 @@ package de.maifii.skywarsffa.listeners;
 import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.utils.InventoryUtils;
 import de.maifii.skywarsffa.utils.LocationUtils;
+import de.maifii.skywarsffa.utils.MessageUtils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -24,7 +25,7 @@ public class PlayerJoinListener implements Listener {
         player.setHealth(20.0);
         invUtils.setDefaultInventory(player);
         invUtils.setDefaultEquipment(player);
-        event.joinMessage(Component.text(SkyWarsFFA.prefix + "Der Spieler §9" + player.getName() + " §7hat das Spiel betreten."));
+        event.joinMessage(Component.text(MessageUtils.messages.prefix + "Der Spieler §9" + player.getName() + " §7hat das Spiel betreten."));
         LocationUtils.teleport("Spawn", player);
     }
 }

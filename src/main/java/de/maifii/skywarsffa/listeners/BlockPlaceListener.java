@@ -1,6 +1,7 @@
 package de.maifii.skywarsffa.listeners;
 
 import de.maifii.skywarsffa.SkyWarsFFA;
+import de.maifii.skywarsffa.utils.MetadataUtils;
 import org.bukkit.*;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -15,7 +16,7 @@ public class BlockPlaceListener implements Listener {
     public void onBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
         Location location = event.getBlockPlaced().getLocation();
-        if (!SkyWarsFFA.getBuildMode().contains(player)) {
+        if (!player.getMetadata("build").contains(MetadataUtils.VALUE_TRUE)) {
             if (location.getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("spawnHeight.y")) {
                 event.setCancelled(true);
             } else {

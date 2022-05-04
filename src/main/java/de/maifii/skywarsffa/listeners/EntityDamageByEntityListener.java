@@ -3,6 +3,7 @@ package de.maifii.skywarsffa.listeners;
 import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.utils.InventoryUtils;
 import de.maifii.skywarsffa.utils.LocationUtils;
+import de.maifii.skywarsffa.utils.MessageUtils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -26,7 +27,7 @@ public class EntityDamageByEntityListener implements Listener {
             SkyWarsFFA.getInstance().getLastDamager().put(player, lastDamager);
             if (player.getHealth() - event.getFinalDamage() <= 0.0) {
                 event.setCancelled(true);
-                Bukkit.getServer().broadcast(Component.text(SkyWarsFFA.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9" + lastDamager.getName() + " §7getötet."));
+                Bukkit.getServer().broadcast(Component.text(MessageUtils.messages.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9" + lastDamager.getName() + " §7getötet."));
                 LocationUtils.teleport("Spawn", player);
                 player.setHealth(20);
                 player.getInventory().clear();

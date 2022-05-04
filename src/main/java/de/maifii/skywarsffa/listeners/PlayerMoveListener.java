@@ -3,6 +3,7 @@ package de.maifii.skywarsffa.listeners;
 import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.utils.InventoryUtils;
 import de.maifii.skywarsffa.utils.LocationUtils;
+import de.maifii.skywarsffa.utils.MessageUtils;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -22,7 +23,7 @@ public class PlayerMoveListener implements Listener {
 
         if (player.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("deathHeight.y")) {
             if (lastDamager != null) {
-                Bukkit.getServer().broadcast(Component.text(SkyWarsFFA.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9"+ lastDamager.getName()+ " §7getötet."));
+                Bukkit.getServer().broadcast(Component.text(MessageUtils.messages.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9"+ lastDamager.getName()+ " §7getötet."));
                 LocationUtils.teleport("Spawn", player);
                 player.setHealth(20.0);
                 player.getInventory().clear();
@@ -37,7 +38,7 @@ public class PlayerMoveListener implements Listener {
                 player.getInventory().clear();
                 invUtils.setDefaultInventory(player);
                 invUtils.setDefaultEquipment(player);
-                Bukkit.getServer().broadcast(Component.text(SkyWarsFFA.prefix + "Der Spieler §9" + player.getName() + " §7ist gestorben."));
+                Bukkit.getServer().broadcast(Component.text(MessageUtils.messages.prefix + "Der Spieler §9" + player.getName() + " §7ist gestorben."));
             }
         }
     }

@@ -1,54 +1,51 @@
 package de.maifii.skywarsffa;
 
-import de.maifii.skywarsffa.command.CommandManager;
+import de.maifii.skywarsffa.commands.BuildCommand;
 import de.maifii.skywarsffa.listeners.*;
 import de.maifii.skywarsffa.listeners.game.RandomChestListener;
-import de.maifii.skywarsffa.utils.FileUtils;
+import de.maifii.skywarsffa.utils.MessageUtils;
+import dev.jorel.commandapi.CommandAPI;
+import dev.jorel.commandapi.CommandAPIConfig;
+import me.wawwior.config.ConfigProvider;
+import me.wawwior.config.io.impl.FileInfo;
+import me.wawwior.config.io.impl.JsonFileAdapter;
+import me.wawwior.config.io.impl.YamlFileAdapter;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class SkyWarsFFA extends JavaPlugin {
+
+    private final ConfigProvider<FileInfo> configProvider = new ConfigProvider<>(new YamlFileAdapter("./plugins/SkyWarsFFA"), false);
 
     private final File file = new File("plugins/LobbySystem/locations.yml");
     private final YamlConfiguration location = YamlConfiguration.loadConfiguration(this.file);
     private final HashMap<Player, Player> lastDamager = new HashMap<>();
 
-    private static ArrayList<Player> buildMode;
-
-    public static String prefix;
-    public static String noPermission;
-    public static String buildOn;
-    public static String buildOff;
-    public static String wrongInput;
-    public static String locationSet;
-
     private static SkyWarsFFA instance;
 
+    private MessageUtils messageUtils;
+
+    @Override
+    public void onLoad() {
+        CommandAPI.onLoad(new CommandAPIConfig());
+    }
 
     @Override
     public void onEnable() {
         instance = this;
-        buildMode = new ArrayList<>();
+        CommandAPI.onEnable(this);
 
-        FileUtils.setStandardConfig();
-        FileUtils.readConfig();
-
-        commandManager = new CommandManager(this);
+        messageUtils = new MessageUtils(configProvider);
+        messageUtils.load();
 
         this.register();
-        this.loadConfig();
 
     }
 
@@ -64,29 +61,15 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
 
+        new BuildCommand().register();
+
     }
 
-    private void loadConfig() {
-        this.saveDefaultConfig();
-        this.reloadConfig();
-    }
 
 
     @Override
     public void onDisable() {
-
-    }
-
-    CommandManager commandManager;
-
-    @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        return commandManager.onCommand(sender, label, args);
-    }
-
-    @Override
-    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        return commandManager.onTabComplete(sender, alias, args);
+        messageUtils.save();
     }
 
     //getters
@@ -103,11 +86,11 @@ public class SkyWarsFFA extends JavaPlugin {
         return location;
     }
 
-    public static ArrayList<Player> getBuildMode() {
-        return buildMode;
-    }
-
     public HashMap<Player, Player> getLastDamager() {
         return lastDamager;
+    }
+
+    public ConfigProvider<FileInfo> getConfigProvider() {
+        return configProvider;
     }
 }

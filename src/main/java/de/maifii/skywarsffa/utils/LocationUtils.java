@@ -31,7 +31,6 @@ public class LocationUtils {
         SkyWarsFFA.getInstance().getLocation().set(name + ".pitch", player.getLocation().getPitch());
         try {
             SkyWarsFFA.getInstance().getLocation().save(SkyWarsFFA.getInstance().getFile());
-            player.sendMessage(SkyWarsFFA.prefix + "Du hast die Location §e" + name + " §7gesetzt.");
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -42,7 +41,6 @@ public class LocationUtils {
         SkyWarsFFA.getInstance().getLocation().set(name + ".y", player.getLocation().getY());
         try {
             SkyWarsFFA.getInstance().getLocation().save(SkyWarsFFA.getInstance().getFile());
-            player.sendMessage(SkyWarsFFA.prefix + "Du hast die Location §e" +  name + "§7 gesetzt");
         }
         catch (IOException e) {
             e.printStackTrace();
