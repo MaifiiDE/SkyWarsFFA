@@ -43,6 +43,7 @@
                             <artifactSet>
                                 <includes>
                                     <include>me.lucko:commodore</include>
+                                    <include>me.wawwior:config</include>
                                 </includes>
                             </artifactSet>
                             <relocations>

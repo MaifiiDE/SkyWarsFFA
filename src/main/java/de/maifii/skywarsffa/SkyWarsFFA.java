@@ -1,5 +1,7 @@
 package de.maifii.skywarsffa;
 
+import de.maifii.skywarsffa.command.CommandManager;
+import de.maifii.skywarsffa.command.commands.BuildCommand;
 import de.maifii.skywarsffa.listeners.*;
 import de.maifii.skywarsffa.listeners.game.RandomChestListener;
 import de.maifii.skywarsffa.utils.MessageUtils;
@@ -19,6 +21,10 @@ import java.io.File;
 import java.util.HashMap;
 
 public class SkyWarsFFA extends JavaPlugin {
+
+    private final CommandManager commandManager = new CommandManager((c, e) -> {
+        c.getSource().sendMessage("Incomplete or Invalid Command!");
+    });
 
     private final ConfigProvider<FileInfo> configProvider = new ConfigProvider<>(new YamlFileAdapter("./plugins/SkyWarsFFA"), false);
 
@@ -53,11 +59,13 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
 
+        commandManager.register(new BuildCommand());
+
     }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        return super.onCommand(sender, command, label, args);
+        return commandManager.onCommand(sender, label, args);
     }
 
     @Override

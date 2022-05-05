@@ -14,7 +14,7 @@ import java.util.Map;
 public class TreeReducer<T> {
 
 
-    private Map<Class<?>, NodeCloneFactory<CommandNode<T>>> classes;
+    private final Map<Class<?>, NodeCloneFactory<CommandNode<T>>> classes;
 
     public TreeReducer(Map<Class<?>, NodeCloneFactory<CommandNode<T>>> classes) {
         this.classes = classes;

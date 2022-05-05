@@ -2,6 +2,7 @@ package de.maifii.skywarsffa.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import de.maifii.skywarsffa.SkyWarsFFA;
 import me.lucko.commodore.CommodoreProvider;
@@ -10,17 +11,17 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
+import java.util.function.BiConsumer;
 
 public class CommandManager {
 
     private final CommandDispatcher<CommandSender> dispatcher = new CommandDispatcher<>();
 
-    private final Consumer<CommandSyntaxException> handler;
+    private final BiConsumer<CommandContext<CommandSender>, CommandSyntaxException> handler;
 
     private final Map<String, AbstractCommand> commands = new HashMap<>();
 
-    public CommandManager(Consumer<CommandSyntaxException> handler) {
+    public CommandManager(BiConsumer<CommandContext<CommandSender>, CommandSyntaxException> handler) {
         this.handler = handler;
     }
 
@@ -44,13 +45,15 @@ public class CommandManager {
 
         ParseResults<CommandSender> results = dispatcher.parse(input, sender);
 
+        CommandContext<CommandSender> context = results.getContext().build(input);
+
         try {
             return dispatcher.execute(results) > 0;
         } catch (CommandSyntaxException cse) {
             try {
-                commands.get(label).handle(cse);
+                commands.get(label).handle(context, cse);
             } catch (NullPointerException npe) {
-                handler.accept(cse);
+                handler.accept(context, cse);
             }
         }
 

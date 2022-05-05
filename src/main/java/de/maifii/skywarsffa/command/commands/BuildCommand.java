@@ -1,6 +1,6 @@
 package de.maifii.skywarsffa.command.commands;
 
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.command.AbstractCommand;
@@ -20,25 +20,22 @@ public class BuildCommand extends AbstractCommand {
     @Override
     public void build(LiteralArgumentBuilder<CommandSender> builder) {
         builder
-                .requires(s -> s.hasPermission("cursedcats.admin"))
+                .requires(predicate(s -> s instanceof Player).and(s -> s.hasPermission("cursedcats.admin")))
                 .executes(c -> {
-                    c.getSource().sendMessage("Hi");
+                    Player player = (Player) c.getSource();
+                    setBuild(player, player.getMetadata("build").contains(MetadataUtils.VALUE_FALSE));
                     return 1;
                 })
                 .then(
-                        literal("one")
-                                .executes(c -> 1)
-                )
-                .then(
-                        argument("string", StringArgumentType.greedyString())
-                )
-                .then(
-                        literal("two")
-                                .then(
-                                        literal("twentyone")
-                                )
+                        argument("state", BoolArgumentType.bool())
+                                .executes(c -> {
+                                    Player player = (Player) c.getSource();
+                                    setBuild(player, BoolArgumentType.getBool(c, "state"));
+                                    return 1;
+                                })
                 );
     }
+
 
     private void setBuild(Player player, boolean state) {
         player.removeMetadata("build", SkyWarsFFA.getInstance());
