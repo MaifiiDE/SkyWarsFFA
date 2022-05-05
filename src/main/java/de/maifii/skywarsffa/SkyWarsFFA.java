@@ -1,16 +1,14 @@
 package de.maifii.skywarsffa;
 
-import de.maifii.skywarsffa.commands.BuildCommand;
 import de.maifii.skywarsffa.listeners.*;
 import de.maifii.skywarsffa.listeners.game.RandomChestListener;
 import de.maifii.skywarsffa.utils.MessageUtils;
-import dev.jorel.commandapi.CommandAPI;
-import dev.jorel.commandapi.CommandAPIConfig;
 import me.wawwior.config.ConfigProvider;
 import me.wawwior.config.io.impl.FileInfo;
-import me.wawwior.config.io.impl.JsonFileAdapter;
 import me.wawwior.config.io.impl.YamlFileAdapter;
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -33,14 +31,8 @@ public class SkyWarsFFA extends JavaPlugin {
     private MessageUtils messageUtils;
 
     @Override
-    public void onLoad() {
-        CommandAPI.onLoad(new CommandAPIConfig());
-    }
-
-    @Override
     public void onEnable() {
         instance = this;
-        CommandAPI.onEnable(this);
 
         messageUtils = new MessageUtils(configProvider);
         messageUtils.load();
@@ -61,11 +53,12 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
 
-        new BuildCommand().register();
-
     }
 
-
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        return super.onCommand(sender, command, label, args);
+    }
 
     @Override
     public void onDisable() {
