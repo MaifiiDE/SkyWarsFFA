@@ -8,7 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class ItemUtils {
 
-    public void setItemInInventory(Inventory inventory, Material material, String name, Integer slot, Integer zahl) {
+    public static void setItemInInventory(Inventory inventory, Material material, String name, Integer slot, Integer zahl) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(name);
@@ -18,7 +18,7 @@ public class ItemUtils {
         inventory.setItem(slot, item);
     }
 
-    public void addItemInInventory(Inventory inventory, Material material, String displayName, Integer amount) {
+    public static void addItemInInventory(Inventory inventory, Material material, String displayName, Integer amount) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(displayName);
@@ -28,7 +28,7 @@ public class ItemUtils {
         inventory.addItem(new ItemStack[]{item});
     }
 
-    public void setItemInInventoryWithEnchantment(Inventory inventory, Material material, String name, Enchantment enchantment, Integer enchantmentValue, Integer slot) {
+    public static void setItemInInventoryWithEnchantment(Inventory inventory, Material material, String name, Enchantment enchantment, Integer enchantmentValue, Integer slot) {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(name);

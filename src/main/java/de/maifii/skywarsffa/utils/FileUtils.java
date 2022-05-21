@@ -1,6 +1,7 @@
 package de.maifii.skywarsffa.utils;
 
 import de.maifii.skywarsffa.SkyWarsFFA;
+import de.maifii.skywarsffa.listeners.game.RandomChestListener;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -8,6 +9,15 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 
 public class FileUtils {
+
+    /*
+     TODO: -Strings aus der RandomChestKlasse hier hinzufügen
+           -
+           -
+
+
+    */
+
 
     public static File getConfigFile() {
         return new File("plugins/SkyWarsFFA", "config.yml");
@@ -27,6 +37,8 @@ public class FileUtils {
         cfg.addDefault("buildOff", "Du wurdest aus den &9Bau Modus &7entfernt.");
         cfg.addDefault("falscheEingabe", "&cFalsche Eingabe&7! Bitte benutze &9/");
         cfg.addDefault("locationSet", "Du hast erfolgreich eine &9Location &7gesetzt ");
+        cfg.addDefault("Chatnachrichten", "  ");
+        cfg.addDefault("egg", "§5Eier");
         try {
             cfg.save(getConfigFile());
         }catch (Exception e) {
@@ -42,5 +54,7 @@ public class FileUtils {
         SkyWarsFFA.buildOff = ChatColor.translateAlternateColorCodes('&', cfg.getString("buildOff"));
         SkyWarsFFA.falscheEingabe = ChatColor.translateAlternateColorCodes('&', cfg.getString("falscheEingabe"));
         SkyWarsFFA.locationSet = ChatColor.translateAlternateColorCodes('&', cfg.getString("locationSet"));
+
+        RandomChestListener.egg = ChatColor.translateAlternateColorCodes('&', cfg.getString("egg"));
     }
 }

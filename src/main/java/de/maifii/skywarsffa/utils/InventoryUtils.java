@@ -1,5 +1,6 @@
 package de.maifii.skywarsffa.utils;
 
+import de.maifii.skywarsffa.listeners.game.KitInvListener;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -32,12 +33,18 @@ public class InventoryUtils {
         spieler.getEquipment().setBoots(boots);
     }
 
-    public void setInventory(Player spieler) {
+    public void setInventory(Player player) {
         ItemUtils items = new ItemUtils();
-        items.setItemInInventoryWithEnchantment(spieler.getInventory(), Material.STONE_SWORD, "", Enchantment.DAMAGE_ALL, 1, 0);
-        items.setItemInInventory(spieler.getInventory(), Material.STONE_PICKAXE, "", 1, 1);
-        items.setItemInInventory(spieler.getInventory(), Material.STONE_AXE, "", 2, 1);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 3, 64);
+        items.setItemInInventoryWithEnchantment(player.getInventory(), Material.STONE_SWORD, "", Enchantment.DAMAGE_ALL, 1, 0);
+        items.setItemInInventory(player.getInventory(), Material.STONE_PICKAXE, "", 1, 1);
+        items.setItemInInventory(player.getInventory(), Material.STONE_AXE, "", 2, 1);
+        items.setItemInInventory(player.getInventory(), Material.SANDSTONE, "", 3, 64);
+    }
+
+    public void setKitInv(Player player) {
+        ItemUtils items = new ItemUtils();
+        items.setItemInInventory(player.getInventory(), Material.CHEST, KitInvListener.KitItem, 4, 1);
+
     }
 
     public void addEnderPearl(Player player) {

@@ -14,6 +14,12 @@ import org.bukkit.metadata.MetadataValue;
 
 public class BlockBreakListener implements Listener {
 
+    /* TODO: -Ausnahme beim Abbau bei einer Kiste machen
+             -
+    *
+    * */
+
+
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
 

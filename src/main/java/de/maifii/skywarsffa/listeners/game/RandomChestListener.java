@@ -11,10 +11,24 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import java.util.Objects;
 import java.util.Random;
 
 public class RandomChestListener implements Listener {
+
+
+    /*
+     TODO: -Strings für displaynames anlegen
+           -displaynames in Methoden mit Strings ersetzen
+           -Strings mit der FileUtils "verbinden"
+
+
+
+    Strings für Loot Cases
+    */
+
+    public static String egg;
+    public static String cooked_beef;
+
 
     @EventHandler
     public void onRandomChestClick(PlayerInteractEvent event) {
@@ -40,7 +54,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.EGG, "§9Eier", 5);
+                        items.addItemInInventory(event.getPlayer().getInventory(), Material.EGG, egg, 5);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 1:

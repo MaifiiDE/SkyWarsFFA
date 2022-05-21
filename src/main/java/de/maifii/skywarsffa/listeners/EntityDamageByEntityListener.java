@@ -17,6 +17,13 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class EntityDamageByEntityListener implements Listener {
 
+    /* TODO: -CoinAPI connecten
+             -Pro Kill 100 Coins per CoinAPI hinzufügen
+
+
+     */
+
+
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
 
