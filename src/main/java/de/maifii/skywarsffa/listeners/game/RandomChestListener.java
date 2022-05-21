@@ -21,7 +21,7 @@ public class RandomChestListener implements Listener {
 
 
         ItemUtils items = new ItemUtils();
-        Player spieler = event.getPlayer();
+        Player player = event.getPlayer();
 
 
 
@@ -34,133 +34,191 @@ public class RandomChestListener implements Listener {
                 int zufall = r.nextInt(19);
                 switch (zufall) {
                     case 0:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.EGG, "§9Eier", 5);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 1:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.COOKED_BEEF, "§9Fleisch", 8);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 2:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.BEETROOT_SOUP, "§9Suppe", 6);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 3:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.BOW, "§9Bogen", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 4:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.ARROW, "§9Pfeile", 10);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 5:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_SWORD, "§9Eisen Schwert", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 6:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.setItemInInventoryWithEnchantment(event.getPlayer().getInventory(), Material.IRON_SWORD, "§9Eisen Schwert", Enchantment.DAMAGE_ALL, 1, 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 7:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.FISHING_ROD, "§9Angel", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 8:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.setItemInInventoryWithEnchantment(event.getPlayer().getInventory(), Material.FISHING_ROD, "§9Angel", Enchantment.DURABILITY, 3, 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 9:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_CHESTPLATE, "§9Eisen Brustpanzer", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 10:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_LEGGINGS, "§9Eisen Hose", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 11:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_BOOTS, "§9Eisen Schuhe", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 12:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_HELMET, "§9Eisen Helm", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 13:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.GOLDEN_APPLE, "§9Goldapfel", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 14:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_CHESTPLATE, "§9Diamant Brustpanzer", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 15:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_LEGGINGS, "§9Diament Hose", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 16:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_BOOTS, "§9Diamant Schuhe", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 17:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_HELMET, "§9Diamant Helm", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 18:
-                        spieler.closeInventory();
+                        player.closeInventory();
+                        player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1F ,1F);
+                        player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1);
+                        player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
+
                         block.setType(Material.GLASS);
 
                         items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_SWORD, "§9Diamant Schwert", 1);

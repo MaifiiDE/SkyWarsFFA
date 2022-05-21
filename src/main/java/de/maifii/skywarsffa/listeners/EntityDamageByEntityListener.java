@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 
+
 public class EntityDamageByEntityListener implements Listener {
 
     @EventHandler
@@ -50,10 +51,10 @@ public class EntityDamageByEntityListener implements Listener {
                     invs.setInventory(spieler);
                     invs.addEnderPearl(lastdamager);
 
+
+
                     lastdamager.setHealth(20);
                     lastdamager.getWorld().playSound(spieler.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
-
-
                 }
             } else {
                 event.setCancelled(true);
