@@ -53,18 +53,16 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new FoodLevelChangeListener(), this);
         pluginManager.registerEvents(new WeatherChangeListener(), this);
         pluginManager.registerEvents(new EntityDamageListener(), this);
-        pluginManager.registerEvents(new EntityDamageByEntityListener(), this);
+
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
+        pluginManager.registerEvents(new EntityDamageByEntityListener(), this);
 
         getCommand("build").setExecutor(new BuildCommand());
         getCommand("set").setExecutor(new SetCommand());
     }
 
-    private void loadConfig() {
-        this.saveDefaultConfig();
-        this.reloadConfig();
-    }
+
 
 
     @Override
@@ -72,6 +70,11 @@ public class SkyWarsFFA extends JavaPlugin {
 
     }
 
+
+    private void loadConfig() {
+        this.saveDefaultConfig();
+        this.reloadConfig();
+    }
 
 
 

@@ -12,6 +12,7 @@ public class ItemUtils {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(name);
+        itemMeta.setUnbreakable(true);
         item.setItemMeta(itemMeta);
         item.setAmount(zahl);
         inventory.setItem(slot, item);

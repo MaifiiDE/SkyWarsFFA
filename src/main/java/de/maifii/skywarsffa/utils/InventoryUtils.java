@@ -34,15 +34,10 @@ public class InventoryUtils {
 
     public void setInventory(Player spieler) {
         ItemUtils items = new ItemUtils();
-        items.setItemInInventoryWithEnchantment(spieler.getInventory(), Material.IRON_SWORD, "", Enchantment.DAMAGE_ALL, 1, 0);
-        items.setItemInInventoryWithEnchantment(spieler.getInventory(), Material.STICK, "", Enchantment.KNOCKBACK, 1, 1);
-        items.setItemInInventory(spieler.getInventory(), Material.ENDER_PEARL, "", 2, 2);
+        items.setItemInInventoryWithEnchantment(spieler.getInventory(), Material.STONE_SWORD, "", Enchantment.DAMAGE_ALL, 1, 0);
+        items.setItemInInventory(spieler.getInventory(), Material.STONE_PICKAXE, "", 1, 1);
+        items.setItemInInventory(spieler.getInventory(), Material.STONE_AXE, "", 2, 1);
         items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 3, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 4, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 5, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 6, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.SANDSTONE, "", 7, 64);
-        items.setItemInInventory(spieler.getInventory(), Material.LADDER, "", 8, 4);
     }
 
     public void addEnderPearl(Player player) {
