@@ -54,14 +54,18 @@ public class EntityDamageByEntityListener implements Listener {
                     locations.teleport("Spawn", spieler);
                     spieler.setHealth(20);
                     spieler.getInventory().clear();
-                    invs.setEquipment(spieler);
-                    invs.setInventory(spieler);
+                    invs.setKitInv(spieler);
                     invs.addEnderPearl(lastdamager);
 
 
 
                     lastdamager.setHealth(20);
                     lastdamager.getWorld().playSound(spieler.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
+
+                    if(SkyWarsFFA.getSoupKit().contains(spieler)) {
+                        SkyWarsFFA.getSoupKit().remove(spieler);
+                    }else
+                        return;
                 }
             } else {
                 event.setCancelled(true);

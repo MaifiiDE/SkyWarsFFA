@@ -95,6 +95,8 @@ public class KitInvListener implements Listener {
                     spieler.sendMessage(SkyWarsFFA.Prefix + "Du hast das Kit §5Soup §7ausgewählt.");
                     spieler.playSound(spieler.getLocation(), Sound.BLOCK_TRIPWIRE_CLICK_ON, 1, 1);
                     spieler.closeInventory();
+                    spieler.getInventory().clear();
+                    invs.setSoupKit(spieler);
                 }
                 else {
                     spieler.sendMessage(SkyWarsFFA.Prefix + "Du hast dieses Kit bereits ausgewählt.");

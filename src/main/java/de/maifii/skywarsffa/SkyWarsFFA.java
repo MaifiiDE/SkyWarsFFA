@@ -54,7 +54,6 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new RandomChestListener(), this);
         pluginManager.registerEvents(new BlockBreakListener(), this);
         pluginManager.registerEvents(new BlockPlaceListener(), this);
-        pluginManager.registerEvents(new FoodLevelChangeListener(), this);
         pluginManager.registerEvents(new WeatherChangeListener(), this);
         pluginManager.registerEvents(new EntityDamageListener(), this);
         pluginManager.registerEvents(new PlayerMoveListener(), this);

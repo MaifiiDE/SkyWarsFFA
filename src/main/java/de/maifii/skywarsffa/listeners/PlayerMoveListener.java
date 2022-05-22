@@ -28,8 +28,7 @@ public class PlayerMoveListener implements Listener {
                 locations.teleport("Spawn", spieler);
                 spieler.setHealth(20.0);
                 spieler.getInventory().clear();
-                invs.setInventory(spieler);
-                invs.setEquipment(spieler);
+                invs.setKitInv(spieler);
                 invs.addEnderPearl(lastDamager);
                 lastDamager.setHealth(20.0);
                 lastDamager.playSound(spieler.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
@@ -37,8 +36,7 @@ public class PlayerMoveListener implements Listener {
                 locations.teleport("Spawn", spieler);
                 spieler.setHealth(20.0);
                 spieler.getInventory().clear();
-                invs.setInventory(spieler);
-                invs.setEquipment(spieler);
+                invs.setKitInv(spieler);
                 Bukkit.broadcastMessage(SkyWarsFFA.Prefix + "Der Spieler §9" + spieler.getName() + " §7ist gestorben.");
             }
         }
