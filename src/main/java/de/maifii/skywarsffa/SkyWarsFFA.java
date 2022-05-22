@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 public class SkyWarsFFA extends JavaPlugin {
 
-    private File file = new File("plugins//LobbySystem//locations.yml");
+    private File file = new File("plugins//SkywarsFFA//locations.yml");
     private YamlConfiguration location = YamlConfiguration.loadConfiguration(this.file);
     private HashMap<Player, Player> lastDamager = new HashMap();
 
