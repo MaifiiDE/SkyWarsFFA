@@ -16,12 +16,10 @@ import java.util.function.Predicate;
 
 public abstract class AbstractCommand {
 
-    public static BiConsumer<CommandContext<CommandSender>, CommandSyntaxException> defaultHandler = (c, e) -> c.getSource().sendMessage("Incomplete or Invalid Command!");
-
-    private final TreeReducer<CommandSender> reducer = new TreeReducer<>(new HashMap<>(){{
-        put(LiteralCommandNode.class, node -> TreeReducer.literal(((LiteralCommandNode<CommandSender>) node).getLiteral()));
-        put(ArgumentCommandNode.class, node -> TreeReducer.argument(node.getName(), ((ArgumentCommandNode) node).getType()));
-    }});
+    public static BiConsumer<CommandContext<CommandSender>, CommandSyntaxException> defaultHandler = (c, e) -> {
+        c.getSource().sendMessage("Incomplete or Invalid Command!");
+        e.printStackTrace();
+    };
 
     private final String name;
 
@@ -42,7 +40,7 @@ public abstract class AbstractCommand {
     public LiteralCommandNode<CommandSender> getSuggestor() {
         LiteralArgumentBuilder<CommandSender> builder = LiteralArgumentBuilder.literal(name);
         build(builder);
-        return (LiteralCommandNode<CommandSender>) reducer.reduce(builder.build());
+        return builder.build();
     }
 
     public CommandNode<CommandSender> getCommand() {

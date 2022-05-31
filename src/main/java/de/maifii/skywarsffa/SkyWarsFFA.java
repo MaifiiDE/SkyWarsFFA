@@ -1,5 +1,6 @@
 package de.maifii.skywarsffa;
 
+import com.comphenix.protocol.ProtocolManager;
 import de.maifii.skywarsffa.command.CommandManager;
 import de.maifii.skywarsffa.command.commands.BuildCommand;
 import de.maifii.skywarsffa.listeners.*;
@@ -16,14 +17,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 
 public class SkyWarsFFA extends JavaPlugin {
 
     private final CommandManager commandManager = new CommandManager((c, e) -> {
         c.getSource().sendMessage("Incomplete or Invalid Command!");
+        getLogger().warning(e.getMessage());
     });
 
     private final ConfigProvider<FileInfo> configProvider = new ConfigProvider<>(new YamlFileAdapter("./plugins/SkyWarsFFA"), false);
@@ -59,6 +63,8 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
 
+        pluginManager.registerEvents(commandManager, this);
+
         commandManager.register(new BuildCommand());
 
     }
@@ -66,6 +72,11 @@ public class SkyWarsFFA extends JavaPlugin {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         return commandManager.onCommand(sender, label, args);
+    }
+
+    @Override
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+        return commandManager.onTabComplete(sender, command, alias, args);
     }
 
     @Override

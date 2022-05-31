@@ -4,6 +4,7 @@ import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import de.maifii.skywarsffa.SkyWarsFFA;
 import de.maifii.skywarsffa.command.AbstractCommand;
+import de.maifii.skywarsffa.command.arguments.EntityArgument;
 import de.maifii.skywarsffa.utils.MessageUtils;
 import de.maifii.skywarsffa.utils.MetadataUtils;
 import org.bukkit.GameMode;
@@ -27,12 +28,20 @@ public class BuildCommand extends AbstractCommand {
                     return 1;
                 })
                 .then(
-                        argument("state", BoolArgumentType.bool())
+                        argument("players", EntityArgument.player())
                                 .executes(c -> {
-                                    Player player = (Player) c.getSource();
-                                    setBuild(player, BoolArgumentType.getBool(c, "state"));
+                                    Player player = EntityArgument.getPlayer(c, "players");
+                                    setBuild(player, player.getMetadata("build").contains(MetadataUtils.VALUE_FALSE));
                                     return 1;
                                 })
+                                .then(
+                                        argument("state", BoolArgumentType.bool())
+                                                .executes(c -> {
+                                                    Player player = EntityArgument.getPlayer(c, "players");
+                                                    setBuild(player, BoolArgumentType.getBool(c, "state"));
+                                                    return 1;
+                                                })
+                                )
                 );
     }
 
@@ -44,4 +53,5 @@ public class BuildCommand extends AbstractCommand {
         player.setGameMode(state ? GameMode.CREATIVE : GameMode.SURVIVAL);
         player.playSound(player.getLocation(), state ? Sound.BLOCK_CHEST_OPEN : Sound.BLOCK_CHEST_CLOSE, 1, 1);
     }
+
 }
