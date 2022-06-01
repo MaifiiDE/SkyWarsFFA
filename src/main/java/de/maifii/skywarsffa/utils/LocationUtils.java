@@ -22,24 +22,28 @@ public class LocationUtils extends Configurable<LocationUtils.LocationConfig, Fi
 
         public Map<String, Location> anchors = new HashMap<>();
 
-        public double spawnHeight;
+        public double spawnHeight = 64;
 
-        public double deathHeight;
+        public double deathHeight = 0;
 
 
     }
 
     public void teleport(String name, Player player) {
-        player.teleport(config.anchors.get(name));
-    }
-
-    public void setLocation(String name, Player player) {
-        config.anchors.replace(name, player.getLocation());
-    }
-
-    public void setHeight(String name, Player player) {
         try {
-            config.anchors.get(name).setY(player.getLocation().getY());
+            player.teleport(config.anchors.get(name));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setLocation(String name, Location location) {
+        config.anchors.replace(name, location);
+    }
+
+    public void setHeight(String name, Location location) {
+        try {
+            config.anchors.get(name).setY(location.getY());
         } catch (NullPointerException e) {
             e.printStackTrace();
         }

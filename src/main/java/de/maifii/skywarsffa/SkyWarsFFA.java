@@ -1,6 +1,5 @@
 package de.maifii.skywarsffa;
 
-import com.comphenix.protocol.ProtocolManager;
 import de.maifii.skywarsffa.command.CommandManager;
 import de.maifii.skywarsffa.command.commands.BuildCommand;
 import de.maifii.skywarsffa.listeners.*;
