@@ -23,13 +23,16 @@ public class RandomChestListener implements Listener {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Block block = event.getClickedBlock();
 
-            if(Objects.requireNonNull(event.getClickedBlock()).getType() == Material.CHEST) {
+            if(Objects.requireNonNull(block).getType() == Material.CHEST) {
 
                 Location location = event.getClickedBlock().getLocation();
                 ItemUtils items = new ItemUtils();
                 Player player = event.getPlayer();
 
                 player.closeInventory();
+                player.playSound(block.getLocation(), Sound.BLOCK_CHEST_OPEN, 1f ,1f);
+                player.playEffect(block.getLocation(), Effect.BLAZE_SHOOT, 1f);
+                player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1f);
                 Objects.requireNonNull(block).setType(Material.GLASS);
                 location.getWorld().playEffect(location, Effect.SMOKE, 3, 3);
                 location.getWorld().playSound(location, Sound.BLOCK_TRIPWIRE_CLICK_ON, 1, 1);

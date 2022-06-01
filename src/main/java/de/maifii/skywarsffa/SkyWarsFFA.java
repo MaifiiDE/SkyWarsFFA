@@ -5,6 +5,7 @@ import de.maifii.skywarsffa.command.CommandManager;
 import de.maifii.skywarsffa.command.commands.BuildCommand;
 import de.maifii.skywarsffa.listeners.*;
 import de.maifii.skywarsffa.listeners.game.RandomChestListener;
+import de.maifii.skywarsffa.utils.LocationUtils;
 import de.maifii.skywarsffa.utils.MessageUtils;
 import me.wawwior.config.ConfigProvider;
 import me.wawwior.config.io.impl.FileInfo;
@@ -32,12 +33,13 @@ public class SkyWarsFFA extends JavaPlugin {
 
     private final ConfigProvider<FileInfo> configProvider = new ConfigProvider<>(new YamlFileAdapter("./plugins/SkyWarsFFA"), false);
 
-    private final File file = new File("plugins/LobbySystem/locations.yml");
+
+    private final File file = new File("plugins/SkyWarsFFA/locations.yml");
     private final YamlConfiguration location = YamlConfiguration.loadConfiguration(this.file);
     private final HashMap<Player, Player> lastDamager = new HashMap<>();
 
     private static SkyWarsFFA instance;
-
+    private LocationUtils locationUtils;
     private MessageUtils messageUtils;
 
     @Override
@@ -46,6 +48,9 @@ public class SkyWarsFFA extends JavaPlugin {
 
         messageUtils = new MessageUtils(configProvider);
         messageUtils.load();
+
+        locationUtils = new LocationUtils(configProvider);
+        locationUtils.load();
 
         this.register();
 
@@ -62,8 +67,6 @@ public class SkyWarsFFA extends JavaPlugin {
         pluginManager.registerEvents(new EntityDamageByEntityListener(), this);
         pluginManager.registerEvents(new PlayerMoveListener(), this);
         pluginManager.registerEvents(new PlayerJoinListener(), this);
-
-        pluginManager.registerEvents(commandManager, this);
 
         commandManager.register(new BuildCommand());
 
@@ -82,6 +85,7 @@ public class SkyWarsFFA extends JavaPlugin {
     @Override
     public void onDisable() {
         messageUtils.save();
+        locationUtils.save();
     }
 
     //getters
@@ -93,9 +97,8 @@ public class SkyWarsFFA extends JavaPlugin {
     public @NotNull File getFile() {
         return file;
     }
-
-    public YamlConfiguration getLocation() {
-        return location;
+    public static LocationUtils getLocationUtils() {
+        return instance.locationUtils;
     }
 
     public HashMap<Player, Player> getLastDamager() {

@@ -1,49 +1,59 @@
 package de.maifii.skywarsffa.utils;
 
 import de.maifii.skywarsffa.SkyWarsFFA;
-import org.bukkit.Bukkit;
+import me.wawwior.config.ConfigProvider;
+import me.wawwior.config.Configurable;
+import me.wawwior.config.IConfig;
+import me.wawwior.config.io.impl.FileInfo;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 
-public class LocationUtils {
+public class LocationUtils extends Configurable<LocationUtils.LocationConfig, FileInfo> {
 
-    public static void teleport(String name, Player player) {
-        World world = Bukkit.getWorld(Objects.requireNonNull(SkyWarsFFA.getInstance().getLocation().getString(name + ".world")));
-        double x = SkyWarsFFA.getInstance().getLocation().getDouble(name + ".x");
-        double y = SkyWarsFFA.getInstance().getLocation().getDouble(name + ".y");
-        double z = SkyWarsFFA.getInstance().getLocation().getDouble(name + ".z");
-        float yaw = (float) SkyWarsFFA.getInstance().getLocation().getDouble(name + ".yaw");
-        float pitch = (float) SkyWarsFFA.getInstance().getLocation().getDouble(name + ".pitch");
-        Location location = new Location(world, x, y, z, yaw, pitch);
-        player.teleport(location);
+    public LocationUtils(ConfigProvider<FileInfo> provider) {
+        super(LocationConfig.class, FileInfo.of("/", "locations"), provider);
     }
 
-    public static void setLocation(String name, Player player) {
-        SkyWarsFFA.getInstance().getLocation().set(name + ".world", player.getWorld().getName());
-        SkyWarsFFA.getInstance().getLocation().set(name + ".x", player.getLocation().getX());
-        SkyWarsFFA.getInstance().getLocation().set(name + ".y",player.getLocation().getY());
-        SkyWarsFFA.getInstance().getLocation().set(name + ".z", player.getLocation().getZ());
-        SkyWarsFFA.getInstance().getLocation().set(name + ".yaw", player.getLocation().getYaw());
-        SkyWarsFFA.getInstance().getLocation().set(name + ".pitch", player.getLocation().getPitch());
+    public static class LocationConfig implements IConfig {
+
+        public Map<String, Location> anchors = new HashMap<>();
+
+        public double spawnHeight;
+
+        public double deathHeight;
+
+
+    }
+
+    public void teleport(String name, Player player) {
+        player.teleport(config.anchors.get(name));
+    }
+
+    public void setLocation(String name, Player player) {
+        config.anchors.replace(name, player.getLocation());
+    }
+
+    public void setHeight(String name, Player player) {
         try {
-            SkyWarsFFA.getInstance().getLocation().save(SkyWarsFFA.getInstance().getFile());
-        }
-        catch (IOException e) {
+            config.anchors.get(name).setY(player.getLocation().getY());
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    public static void setHeight(String name, Player player) {
-        SkyWarsFFA.getInstance().getLocation().set(name + ".y", player.getLocation().getY());
-        try {
-            SkyWarsFFA.getInstance().getLocation().save(SkyWarsFFA.getInstance().getFile());
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+    public double getSpawnHeight() {
+        return config.spawnHeight;
+    }
+
+    public double getDeathHeight() {
+        return config.deathHeight;
+    }
+
+    public static LocationUtils get() {
+        return SkyWarsFFA.getLocationUtils();
     }
 }

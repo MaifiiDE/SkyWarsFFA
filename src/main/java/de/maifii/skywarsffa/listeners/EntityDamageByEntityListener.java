@@ -23,12 +23,12 @@ public class EntityDamageByEntityListener implements Listener {
             return;
         }
 
-        if(player.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("spawnHeight.y")) {
+        if(player.getLocation().getY() <= SkyWarsFFA.getLocationUtils().getSpawnHeight()) {
             SkyWarsFFA.getInstance().getLastDamager().put(player, lastDamager);
             if (player.getHealth() - event.getFinalDamage() <= 0.0) {
-                event.setCancelled(true);
+
                 Bukkit.getServer().broadcast(Component.text(MessageUtils.messages.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9" + lastDamager.getName() + " §7getötet."));
-                LocationUtils.teleport("Spawn", player);
+                LocationUtils.get().teleport("spawn", player);
                 player.setHealth(20);
                 player.getInventory().clear();
                 invUtils.setDefaultEquipment(player);

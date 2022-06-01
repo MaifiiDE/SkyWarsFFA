@@ -26,6 +26,6 @@ public class PlayerJoinListener implements Listener {
         invUtils.setDefaultInventory(player);
         invUtils.setDefaultEquipment(player);
         event.joinMessage(Component.text(MessageUtils.messages.prefix + "Der Spieler §9" + player.getName() + " §7hat das Spiel betreten."));
-        LocationUtils.teleport("Spawn", player);
+        LocationUtils.get().teleport("spawn", player);
     }
 }

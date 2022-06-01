@@ -21,10 +21,10 @@ public class PlayerMoveListener implements Listener {
         Player player = event.getPlayer();
         Player lastDamager = SkyWarsFFA.getInstance().getLastDamager().get(player);
 
-        if (player.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("deathHeight.y")) {
+        if (player.getLocation().getY() <= LocationUtils.get().getDeathHeight()) {
             if (lastDamager != null) {
                 Bukkit.getServer().broadcast(Component.text(MessageUtils.messages.prefix + "Der Spieler §9" + player.getName() + " §7wurde von §9"+ lastDamager.getName()+ " §7getötet."));
-                LocationUtils.teleport("Spawn", player);
+                LocationUtils.get().teleport("Spawn", player);
                 player.setHealth(20.0);
                 player.getInventory().clear();
                 invUtils.setDefaultInventory(player);
@@ -33,7 +33,7 @@ public class PlayerMoveListener implements Listener {
                 lastDamager.setHealth(20.0);
                 lastDamager.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
             } else {
-                LocationUtils.teleport("Spawn", player);
+                LocationUtils.get().teleport("Spawn", player);
                 player.setHealth(20.0);
                 player.getInventory().clear();
                 invUtils.setDefaultInventory(player);

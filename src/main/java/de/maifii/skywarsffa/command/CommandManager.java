@@ -1,6 +1,5 @@
 package de.maifii.skywarsffa.command;
 
-import com.destroystokyo.paper.event.brigadier.AsyncPlayerSendSuggestionsEvent;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.context.CommandContext;
@@ -8,7 +7,6 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.jetbrains.annotations.NotNull;
 
@@ -67,28 +65,6 @@ public class CommandManager implements Listener {
 
     }
 
-    @EventHandler
-    public void onPlayerSuggest(AsyncPlayerSendSuggestionsEvent event) {
-
-        ParseResults<CommandSender> results = dispatcher.parse(event.getBuffer(), event.getPlayer());
-
-        System.out.println("Buffer: " + event.getBuffer());
-
-        System.out.println("Original: " + event.getSuggestions());
-
-        try {
-
-            Suggestions suggestions = dispatcher.getCompletionSuggestions(results).get();
-            System.out.println("New: " + suggestions);
-
-            //event.setSuggestions(suggestions);
-
-        } catch (InterruptedException | ExecutionException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 
         StringBuilder builder = new StringBuilder().append(alias);
@@ -115,6 +91,5 @@ public class CommandManager implements Listener {
         } catch (InterruptedException | ExecutionException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
