@@ -25,7 +25,7 @@ public class ItemUtils {
         itemMeta.setUnbreakable(true);
         item.setItemMeta(itemMeta);
         item.setAmount(amount);
-        inventory.addItem(new ItemStack[]{item});
+        inventory.addItem(item);
     }
 
     public static void setItemInInventoryWithEnchantment(Inventory inventory, Material material, String name, Enchantment enchantment, Integer enchantmentValue, Integer slot) {

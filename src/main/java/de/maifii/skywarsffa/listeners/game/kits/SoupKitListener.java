@@ -13,7 +13,7 @@ public class SoupKitListener implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
-        if(SkyWarsFFA.getSoupKit().contains(event.getPlayer())) {
+        if(SkyWarsFFA.getPlayersInSoupKit().contains(event.getPlayer())) {
             Player player = event.getPlayer();
             try {
                 if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
@@ -36,7 +36,7 @@ public class SoupKitListener implements Listener {
                 // empty catch block
             }
         }
-        else
-            return;
+        else {
+        }
     }
 }

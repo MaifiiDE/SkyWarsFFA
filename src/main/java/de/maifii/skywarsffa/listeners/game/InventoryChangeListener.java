@@ -1,14 +1,5 @@
 package de.maifii.skywarsffa.listeners.game;
 
-import de.maifii.skywarsffa.SkyWarsFFA;
-import de.maifii.skywarsffa.utils.InventoryUtils;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
-
-import static de.maifii.skywarsffa.SkyWarsFFA.*;
-
 
 /*
 public class InventoryChangeListener implements Listener {

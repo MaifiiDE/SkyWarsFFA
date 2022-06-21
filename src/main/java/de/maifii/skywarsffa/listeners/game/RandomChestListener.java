@@ -54,7 +54,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.EGG, egg, 5);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.EGG, egg, 5);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 1:
@@ -64,7 +64,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.COOKED_BEEF, "§9Fleisch", 8);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.COOKED_BEEF, "§9Fleisch", 8);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 2:
@@ -74,7 +74,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.BEETROOT_SOUP, "§9Suppe", 6);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.BEETROOT_SOUP, "§9Suppe", 6);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 3:
@@ -84,7 +84,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.BOW, "§9Bogen", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.BOW, "§9Bogen", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 4:
@@ -94,7 +94,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.ARROW, "§9Pfeile", 10);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.ARROW, "§9Pfeile", 10);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 5:
@@ -104,7 +104,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_SWORD, "§9Eisen Schwert", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_SWORD, "§9Eisen Schwert", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 6:
@@ -114,7 +114,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.setItemInInventoryWithEnchantment(event.getPlayer().getInventory(), Material.IRON_SWORD, "§9Eisen Schwert", Enchantment.DAMAGE_ALL, 1, 1);
+                        ItemUtils.setItemInInventoryWithEnchantment(event.getPlayer().getInventory(), Material.IRON_SWORD, "§9Eisen Schwert", Enchantment.DAMAGE_ALL, 1, 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 7:
@@ -124,7 +124,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.FISHING_ROD, "§9Angel", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.FISHING_ROD, "§9Angel", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 8:
@@ -134,7 +134,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.setItemInInventoryWithEnchantment(event.getPlayer().getInventory(), Material.FISHING_ROD, "§9Angel", Enchantment.DURABILITY, 3, 1);
+                        ItemUtils.setItemInInventoryWithEnchantment(event.getPlayer().getInventory(), Material.FISHING_ROD, "§9Angel", Enchantment.DURABILITY, 3, 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 9:
@@ -144,7 +144,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_CHESTPLATE, "§9Eisen Brustpanzer", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_CHESTPLATE, "§9Eisen Brustpanzer", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 10:
@@ -154,7 +154,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_LEGGINGS, "§9Eisen Hose", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_LEGGINGS, "§9Eisen Hose", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 11:
@@ -164,7 +164,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_BOOTS, "§9Eisen Schuhe", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_BOOTS, "§9Eisen Schuhe", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 12:
@@ -174,7 +174,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_HELMET, "§9Eisen Helm", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.IRON_HELMET, "§9Eisen Helm", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 13:
@@ -184,7 +184,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.GOLDEN_APPLE, "§9Goldapfel", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.GOLDEN_APPLE, "§9Goldapfel", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 14:
@@ -194,7 +194,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_CHESTPLATE, "§9Diamant Brustpanzer", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_CHESTPLATE, "§9Diamant Brustpanzer", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 15:
@@ -204,7 +204,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_LEGGINGS, "§9Diament Hose", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_LEGGINGS, "§9Diament Hose", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 16:
@@ -214,7 +214,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_BOOTS, "§9Diamant Schuhe", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_BOOTS, "§9Diamant Schuhe", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 17:
@@ -224,7 +224,7 @@ public class RandomChestListener implements Listener {
                         player.playEffect(block.getLocation(), Effect.ELECTRIC_SPARK, 1);
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_HELMET, "§9Diamant Helm", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_HELMET, "§9Diamant Helm", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                     case 18:
@@ -235,7 +235,7 @@ public class RandomChestListener implements Listener {
 
                         block.setType(Material.GLASS);
 
-                        items.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_SWORD, "§9Diamant Schwert", 1);
+                        ItemUtils.addItemInInventory(event.getPlayer().getInventory(), Material.DIAMOND_SWORD, "§9Diamant Schwert", 1);
                         Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), () -> block.setType(Material.CHEST), 20*120);
                         break;
                 }

@@ -20,7 +20,7 @@ public class PlayerMoveListener implements Listener {
         InventoryUtils invs = new InventoryUtils();
 
         Player spieler = event.getPlayer();
-        Player lastDamager = SkyWarsFFA.getInstance().getLastDamager().get(spieler);
+        Player lastDamager = SkyWarsFFA.getInstance().getLastDamagePair().get(spieler);
 
         if (spieler.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("Deathheight.Y")) {
             if (lastDamager != null) {

@@ -16,12 +16,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 
+import java.util.Objects;
+
 public class KitInvListener implements Listener {
 
-    String KITGUI = "§5Kit-Inventar";
+    final String KIT_GUI_NAME = "§5Kit-Inventar";
     public static String KitItem = "§5Kit-Inventar";
 
-    InventoryUtils invs = new InventoryUtils();
+    final InventoryUtils inventoryUtils = new InventoryUtils();
 
     /* TODO: -
              -
@@ -36,27 +38,26 @@ public class KitInvListener implements Listener {
         player.getInventory().clear();
         player.setMaxHealth(20.0);
         player.setHealth(20.0);
-        invs.setKitInv(player);
+        inventoryUtils.setKitInv(player);
     }
 
-    
-    @EventHandler 
+
+    @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        
-        if (event.getItem() == null) return;
+
+        if (event.getItem() == null || event.getItem().getItemMeta() == null) return;
         if (!(event.getItem().getItemMeta().getDisplayName().equals(KitItem))) return;
-        
+
         if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            
+
             openKitInv(event.getPlayer());
         }
     }
 
-    
-    
+
     public void openKitInv(Player player) {
-        Inventory kits = Bukkit.createInventory(null, 54, KITGUI);
+        Inventory kits = Bukkit.createInventory(null, 54, KIT_GUI_NAME);
 
         ItemUtils.setItemInInventory(kits, Material.IRON_BOOTS, "§5Stomper-Kit", 31, 1);
         ItemUtils.setItemInInventory(kits, Material.MUSHROOM_STEW, "§5Soup-Kit", 22, 1);
@@ -82,29 +83,29 @@ public class KitInvListener implements Listener {
     }
 
 
-
     @EventHandler
     public void OnKITGUIClick(InventoryClickEvent event) {
-        if(!(event.getWhoClicked() instanceof Player)) return;
+        if (!(event.getWhoClicked() instanceof Player)) return;
         Player spieler = (Player) event.getWhoClicked();
-        if(event.getView().getTitle().equals(KITGUI)) {
-            event.setCancelled(true);
-            switch(event.getCurrentItem().getType()) {
-                case MUSHROOM_STEW: if(!SkyWarsFFA.getSoupKit().contains(event.getWhoClicked())) {
-                    SkyWarsFFA.getSoupKit().add((Player) event.getWhoClicked());
+        if (!event.getView().getTitle().equals(KIT_GUI_NAME)) return;
+        event.setCancelled(true);
+        if (event.getCurrentItem() == null) return;
+        switch (event.getCurrentItem().getType()) {
+            case MUSHROOM_STEW: {
+                if (!SkyWarsFFA.getPlayersInSoupKit().contains(spieler)) {
+                    SkyWarsFFA.getPlayersInSoupKit().add((Player) event.getWhoClicked());
                     spieler.sendMessage(SkyWarsFFA.Prefix + "Du hast das Kit §5Soup §7ausgewählt.");
                     spieler.playSound(spieler.getLocation(), Sound.BLOCK_TRIPWIRE_CLICK_ON, 1, 1);
                     spieler.closeInventory();
                     spieler.getInventory().clear();
-                    invs.setSoupKit(spieler);
-                }
-                else {
+                    inventoryUtils.setSoupKit(spieler);
+                } else {
                     spieler.sendMessage(SkyWarsFFA.Prefix + "Du hast dieses Kit bereits ausgewählt.");
                     spieler.playSound(spieler.getLocation(), Sound.BLOCK_TRIPWIRE_CLICK_ON, 1, 1);
                     spieler.closeInventory();
                 }
-                break;
             }
+            break;
         }
     }
 }
