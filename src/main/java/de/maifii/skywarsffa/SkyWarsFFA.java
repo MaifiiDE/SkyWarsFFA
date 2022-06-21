@@ -19,9 +19,9 @@ import java.util.HashMap;
 
 public class SkyWarsFFA extends JavaPlugin {
 
-    private File file = new File("plugins//SkywarsFFA//locations.yml");
-    private YamlConfiguration location = YamlConfiguration.loadConfiguration(this.file);
-    private HashMap<Player, Player> lastDamager = new HashMap();
+    private final File file = new File("plugins//SkywarsFFA//locations.yml");
+    private final YamlConfiguration location = YamlConfiguration.loadConfiguration(this.file);
+    private final HashMap<Player, Player> lastDamagePair = new HashMap<>();
 
     private static ArrayList<Player> buildMode;
     private static ArrayList<Player> soupKit;
@@ -39,8 +39,8 @@ public class SkyWarsFFA extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        buildMode = new ArrayList<Player>();
-        soupKit = new ArrayList<Player>();
+        buildMode = new ArrayList<>();
+        soupKit = new ArrayList<>();
 
         FileUtils.setStandardConfig();
         FileUtils.readConfig();
@@ -101,11 +101,11 @@ public class SkyWarsFFA extends JavaPlugin {
         return buildMode;
     }
 
-    public HashMap<Player, Player> getLastDamager() {
-        return lastDamager;
+    public HashMap<Player, Player> getLastDamagePair() {
+        return lastDamagePair;
     }
 
-    public static ArrayList<Player> getSoupKit() {
+    public static ArrayList<Player> getPlayersInSoupKit() {
         return soupKit;
     }
 }

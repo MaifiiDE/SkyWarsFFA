@@ -9,7 +9,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.MetadataValue;
 
 
 public class BlockBreakListener implements Listener {
@@ -36,13 +35,13 @@ public class BlockBreakListener implements Listener {
                 final Material blocktype = event.getBlock().getType();
                 final BlockData blockdata = event.getBlock().getBlockData();
                 BlockFace face = event.getBlock().getFace(event.getBlock());
-                event.getBlock().setMetadata("Break", (MetadataValue) new FixedMetadataValue(Bukkit.getPluginManager().getPlugin("SkyWarsFFA"), (Object) face));
+                event.getBlock().setMetadata("Break", new FixedMetadataValue(Bukkit.getPluginManager().getPlugin("SkyWarsFFA"), face));
                 if (event.getBlock().hasMetadata("Placed")) {
                     return;
                 }
                 Bukkit.getScheduler().scheduleSyncDelayedTask(SkyWarsFFA.getInstance(), new Runnable() {
 
-                    int blocktime = 4;
+                    final int blocktime = 4;
 
                     @Override
                     public void run() {

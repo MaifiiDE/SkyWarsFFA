@@ -14,7 +14,7 @@ public class EntityDamageListener implements Listener {
         Entity playerEntity = event.getEntity();
         Player spieler = null;
         if (playerEntity instanceof Player) {
-            spieler = (Player) ((Object)playerEntity);
+            spieler = (Player) playerEntity;
         }
         if (spieler instanceof Player) {
             if (spieler.getLocation().getY() >= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {

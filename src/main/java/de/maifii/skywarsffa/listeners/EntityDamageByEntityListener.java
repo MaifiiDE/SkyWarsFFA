@@ -37,16 +37,16 @@ public class EntityDamageByEntityListener implements Listener {
         Player lastdamager = null;
 
         if (playerEntity instanceof Player) {
-            spieler = (Player) ((Object) playerEntity);
+            spieler = (Player) playerEntity;
         }
         if (damagerEntity instanceof Player) {
-            lastdamager = (Player) ((Object) damagerEntity);
+            lastdamager = (Player) damagerEntity;
         }
 
         if (spieler.getLocation().getY() <= SkyWarsFFA.getInstance().getLocation().getDouble("Spawnheight.Y")) {
             if (event.getDamager() instanceof Player) {
 
-                SkyWarsFFA.getInstance().getLastDamager().put(spieler, lastdamager);
+                SkyWarsFFA.getInstance().getLastDamagePair().put(spieler, lastdamager);
                 if (spieler.getHealth() - event.getFinalDamage() <= 0.0) {
 
 
@@ -62,10 +62,10 @@ public class EntityDamageByEntityListener implements Listener {
                     lastdamager.setHealth(20);
                     lastdamager.getWorld().playSound(spieler.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 20.0f, 0.5f);
 
-                    if(SkyWarsFFA.getSoupKit().contains(spieler)) {
-                        SkyWarsFFA.getSoupKit().remove(spieler);
-                    }else
-                        return;
+                    if(SkyWarsFFA.getPlayersInSoupKit().contains(spieler)) {
+                        SkyWarsFFA.getPlayersInSoupKit().remove(spieler);
+                    }else {
+                    }
                 }
             } else {
                 event.setCancelled(true);
